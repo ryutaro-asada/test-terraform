@@ -39,7 +39,7 @@ module "vpc" {
 ################################################################################
 
 module "vpc_endpoints" {
-  source = "terraform-aws-modules/vpc/aws//modules/vpc-endpoints"
+  source  = "terraform-aws-modules/vpc/aws//modules/vpc-endpoints"
   version = "5.1.0"
 
   vpc_id = module.vpc.vpc_id
@@ -57,9 +57,9 @@ module "vpc_endpoints" {
   endpoints = {
     s3 = {
       # geteway type
-      service = "s3"
+      service      = "s3"
       service_type = "Gateway"
-      tags    = { Name = "s3-vpc-endpoint" }
+      tags         = { Name = "s3-vpc-endpoint" }
       # エンドポイントを設定したいサブネットのルートテーブル
       route_table_ids = module.vpc.private_route_table_ids
     },
